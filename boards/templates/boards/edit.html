@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}EDIT{% endblock %}
+{% block body %}
+<h1>{{ board.id }}번 게시글 수정</h1>
+<a href="{% url 'boards:index' %}">메인으로 돌아가기</a>
+<form action="{% url 'boards:update' board.pk %}" method="POST">
+    {% csrf_token %}
+    <div>
+        <label>제목</label>
+        <input type="text" name="title" value="{{board.title}}" />
+    </div>
+    <div>
+        <label>내용</label>
+        <textarea name="content">{{board.content}}</textarea>
+    </div>
+    <button type="submit">게시글 수정</button>
+</form>
+{% endblock %}

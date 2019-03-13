@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}INDEX{% endblock %}
+{% block body %}
+<h1>Hello World!</h1>
+<a href="{% url 'boards:new' %}">게시글 생성</a>
+<ul>
+{% for board in boards %}
+    <li>
+        <p>{{ board.id }}번 게시물</p>
+        <h3><a href="{% url 'boards:detail' board.pk %}">{{ board.title }}</a></h3>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
